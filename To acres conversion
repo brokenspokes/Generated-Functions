@@ -1,0 +1,19 @@
+# This function reads the lot size of a property and converts it into acres
+# This function is written in javascript and runs in Google Apps Script
+
+function TOACRES(input) {
+  var dimensions = input.split('X');
+
+  var width = dimensions[0];
+  var length = dimensions[1];
+
+  var widthparse = width.split('-');
+  var lengthparse = length.split('-');
+
+  var wfeet = Number(widthparse[0]);
+  var lfeet = Number(lengthparse[0]);
+  var winch = Number(widthparse[1]);
+  var linch = Number(lengthparse[1]);
+
+  return ((wfeet + winch/12)*(lfeet + linch/12)/43560);
+}
